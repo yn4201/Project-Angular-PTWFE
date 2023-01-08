@@ -1,0 +1,85 @@
+<form id="input-form" [formGroup]="form" (submit)="update()">
+    <p style="font-weight: bolder">UPDATE STUDENT</p>
+    <mat-form-field appearance="fill">
+      <mat-label>ID</mat-label>
+      <input
+        formControlName="id"
+        matInput
+        placeholder="Enter ID"
+        [readonly]="true"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Tên Sản Phẩm</mat-label>
+      <input formControlName="name" matInput placeholder="Name" />
+      <div
+        *ngIf="
+          form.controls['name'].hasError('required') &&
+          (form.controls['name'].dirty || form.controls['name'].touched)
+        "
+      >
+        <small id="emailHelp" class="text-danger">Name is invalid.</small>
+      </div>
+    </mat-form-field>
+    <br />
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Nhãn Hiệu</mat-label>
+      <input formControlName="brand" matInput placeholder="Brand" />
+      <div
+        *ngIf="
+          form.controls['brand'].hasError('required') &&
+          (form.controls['brand'].dirty || form.controls['brand'].touched)
+        "
+      >
+        <small id="emailHelp" class="text-danger">Brand is empty.</small>
+      </div>
+    </mat-form-field>
+    <br />
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Xuất Xứ</mat-label>
+      <input formControlName="origin" matInput placeholder="Origin" />
+      <div
+        *ngIf="
+          form.controls['origin'].hasError('required') &&
+          (form.controls['origin'].dirty || form.controls['origin'].touched)
+        "
+      >
+        <small id="emailHelp" class="text-danger">Origin is empty.</small>
+      </div>
+    </mat-form-field>
+    <br />
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Giá</mat-label>
+      <input formControlName="money" matInput placeholder="Money" />
+      <div
+        *ngIf="
+          form.controls['money'].hasError('required') &&
+          (form.controls['money'].dirty || form.controls['money'].touched)
+        "
+      >
+        <small id="emailHelp" class="text-danger">Money is empty.</small>
+      </div>
+    </mat-form-field>
+    <br />
+  
+    <p>Trạng Thái</p>
+    <mat-radio-group aria-label="Select an option" formControlName="status">
+      <mat-radio-button value="Còn Hàng" [disabled]="data.status === 'Còn Hàng'"
+        >Còn Hàng</mat-radio-button
+      >
+      <mat-radio-button value="Hết Hàng" [disabled]="data.status === 'Hết Hàng'"
+        >Hết Hàng</mat-radio-button
+      > 
+    </mat-radio-group>
+    <br />
+    <div mat-dialog-actions>
+      <button class="btn btn-outline-primary" mat-button [disabled]="!form.valid">
+        Cập Nhật
+      </button>
+    </div>
+  </form>
+  

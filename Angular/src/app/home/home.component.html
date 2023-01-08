@@ -1,0 +1,230 @@
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <a class="but1" routerLink="/admin/insertitem">
+        <span class="btn1">Thêm sản phẩm</span></a
+      >
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search any"
+        style="float: right; width: 200px; height: inherit"
+      />
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <div class="row">
+            <div class="col-sm-12">
+              <table
+                matSort
+                (matSortChange)="sortData($event)"
+                class="table table-bordered dataTable"
+                id="dataTable"
+                width="100%"
+                cellspacing="0"
+                role="grid"
+                aria-describedby="dataTable_info"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr role="row">
+                    <th
+                      mat-sort-header="id"
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-sort="ascending"
+                      aria-label="Name: activate to sort column descending"
+                      style="width: 50px"
+                    >
+                      ID
+                    </th>
+                    <th
+                      mat-sort-header="name"
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-label="Position: activate to sort column ascending"
+                      style="width: 100px"
+                    >
+                      Tên Sản Phẩm
+                    </th>
+                    <th
+                      mat-sort-header="brand"
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-label="Position: activate to sort column ascending"
+                      style="width: 50px"
+                    >
+                      Thương Hiệu
+                    </th>
+                    <th
+                      mat-sort-header="origin"
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-label="Position: activate to sort column ascending"
+                      style="width: 61px"
+                    >
+                      Xuất Xứ
+                    </th>
+                    <th
+                      mat-sort-header="money"
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-label="Position: activate to sort column ascending"
+                      style="width: 30px"
+                    >
+                      Giá
+                    </th>
+                    <!-- <th
+                      class="sorting"
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-label="Position: activate to sort column ascending"
+                      style="width: 61px"
+                    >
+                      Hình Ảnh
+                    </th> -->
+                    <th
+                      mat-sort-header="status"
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-label="Position: activate to sort column ascending"
+                      style="width: 90px"
+                    >
+                      Trạng Thái
+                    </th>
+                    <th
+                      tabindex="0"
+                      aria-controls="dataTable"
+                      rowspan="1"
+                      colspan="1"
+                      aria-label="Position: activate to sort column ascending"
+                      style="width: 200px"
+                    >
+                      Quản Lý
+                    </th>
+                  </tr>
+                </thead>
+
+                <tfoot>
+                  <tr>
+                    <th rowspan="1" colspan="1">ID</th>
+                    <th rowspan="1" colspan="1">Tên Sản Phẩm</th>
+                    <th rowspan="1" colspan="1">Thương Hiệu</th>
+                    <th rowspan="1" colspan="1">Xuất Xứ</th>
+                    <th rowspan="1" colspan="1">Giá</th>
+                    <th rowspan="1" colspan="1">Trạng Thái</th>
+                    <th rowspan="1" colspan="1">Quản Lý</th>
+                  </tr>
+                </tfoot>
+
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let item of items1 | filter: searchText | paginate: config
+                    "
+                    class="itemRow"
+                  >
+                    <td class="sorting_1">{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.brand }}</td>
+                    <td>{{ item.origin }}</td>
+                    <td>{{ item.money }}</td>
+                    <!-- <td>{{ item.img }}</td> -->
+                    <td *ngIf="item.status == unavailable">
+                      <a
+                        class="option-char"
+                        matTooltip="{{ item.status }}"
+                        [matTooltipPosition]="position.value!"
+                        ><i class="fa fa-times" style="color: red"></i>
+                      </a>
+                    </td>
+
+                    <td *ngIf="item.status == available">
+                      <a
+                        class="option-char"
+                        matTooltip="{{ item.status }}"
+                        [matTooltipPosition]="position.value!"
+                        ><i
+                          class="fa fa-check"
+                          style="color: rgb(0, 255, 34)"
+                        ></i>
+                      </a>
+                    </td>
+                    <!-- <td>
+                      {{ item.status }}
+                    
+                      <span
+                        class="dot" 
+                        [ngClass]="{
+                          'dot-red': item.status == 'Hết Hàng',
+                          'dot-green': item.status == 'Còn Hàng'
+                        }"
+                      ></span>
+                    </td> -->
+                    <td>
+                      <!-- <button
+                        type="button"
+                        class="btn btn-outline-info"
+                        mat-button
+                        (click)="openDialogDetails(item)"
+                      >
+                        Xem
+                      </button> -->
+                      <div
+                        class="divider"
+                        style="width: 10px; height: auto; display: inline-block"
+                      ></div>
+                      <!-- <button type="button" class="btn btn-outline-primary" mat-button (click)="openDialogUpdate(item)" >Edit</button> | -->
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger"
+                        (click)="openDialogDelete(item)"
+                      >
+                        Xóa
+                      </button>
+
+                      <div
+                        class="divider"
+                        style="width: 10px; height: auto; display: inline-block"
+                      ></div>
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary"
+                        mat-button
+                        (click)="openDialogUpdate(item)"
+                      >
+                        Cập Nhật
+                      </button>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls
+                (pageChange)="pageChanged($event)"
+              ></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,26 @@
+.dot {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-block;
+  } 
+  /**
+  Do het hang 
+  xanh con hang 
+  vang sap het hoac ko xai luon cung dc 
+  ben tk them item them 1 option chon a Nhi lam dc ko 
+  dc a. lam giong nhu la id, name dung hong um um nhung lam dang radio button hay gi de chon la dc nha ak oki nha
+  */
+  .dot-red {
+    background-color: red;
+  }
+  .dot-green {
+    background-color: green;
+  }
+  .dot-yellow {
+    background-color: yellow;
+  }
+  .option-char:hover{
+    cursor: pointer;
+  }
+  

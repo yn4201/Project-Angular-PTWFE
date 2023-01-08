@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <a><h2>Thêm thông tin sản phẩm</h2></a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+   <form [formGroup] ="insertFrm" (ngSubmit)="onSubmit()">
+      <div class="form-group" >
+        <label for="id"> Nhập ID Sản Phẩm</label>
+        <input type="text" class="form-control" id="id" aria-describedby="" placeholder="Enter ID" formControlName="id">
+        <div *ngIf="insertFrm.controls['id'].hasError('required') && (insertFrm.controls['id'].dirty||insertFrm.controls['id'].touched)" >
+              <small id="emailHelp" class="text-danger">ID is invalid!</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Tên Sản Phẩm</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter Name" formControlName="name">
+        <div *ngIf="insertFrm.controls['name'].hasError('required') && insertFrm.controls['name'].touched">
+          <small id="nameHelp" class="text-danger">Vui lòng nhập tên sản phẩm</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="brand">Thương Hiệu</label>
+        <input type="text" class="form-control" id="brand" placeholder="Enter Brand" formControlName="brand">
+        <div *ngIf="insertFrm.controls['brand'].hasError('required') && insertFrm.controls['brand'].touched">
+          <small id="nameHelp" class="text-danger">Vui lòng nhập thương hiệu</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="origin">Xuất Xứ</label>
+        <input type="text" class="form-control" id="origin" placeholder="Enter Origin" formControlName="origin">
+        <div *ngIf="insertFrm.controls['origin'].hasError('required') && insertFrm.controls['origin'].touched">
+          <small id="nameHelp" class="text-danger">Vui lòng nhập xuất xứ</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="money">Giá Tiền</label>
+        <input type="text" class="form-control" id="money" placeholder="Enter Money" formControlName="money">
+        <div *ngIf="insertFrm.controls['money'].hasError('required') && insertFrm.controls['money'].touched">
+          <small id="nameHelp" class="text-danger">Vui lòng nhập giá tiền</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label class="form-label" for="status">Trạng thái</label>
+        <select id="status" class="form-control" formControlName="status">
+          <option value="" disabled selected hidden>Chọn trạng thái</option>
+          <option value="Còn Hàng">Còn Hàng</option>
+          <option value="Hết Hàng">Hết Hàng</option>
+        </select>
+        <div *ngIf="insertFrm.controls['status'].hasError('required') && insertFrm.controls['status'].touched">
+          <small id="nameHelp" class="text-danger">Vui lòng chọn trạng thái sản phẩm</small>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!insertFrm.valid">Submit</button>
+      <br>
+      <br>
+      <button class="btn btn-primary" type="submit" routerLink="/admin/item">Cancel</button>
+  </form> 
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  

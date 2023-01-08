@@ -1,0 +1,55 @@
+<header id="header" class="header">
+    <div class="top-left">
+        <div class="navbar-header">
+            <a class="navbar-brand " href="/asset/img/logo.jpg"><img style="width: 100px;height: 80px;" src="https://good.charme.com.vn/wp-content/uploads/2022/03/logo-good-charme-blue-chrome-800x800.png" alt="Logo"></a>
+
+        </div>
+    </div>
+    <div class="top-right">
+        <div class="header-menu">
+            <div class="header-left">
+                <button class="search-trigger"><i class="fa fa-search"></i></button>
+                <div class="form-inline">
+                    <form class="search-form">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                        <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                    </form>
+                </div>
+
+               
+            </div>
+
+            <div *ngIf="displayName"class="user-area dropdown float-right">
+                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{displayName}}</span>
+                    <img class="user-avatar rounded-circle" src="/assets/img/a.jpg" alt="User Avatar">
+                </a>
+
+                <div *ngIf="displayName" class="user-menu dropdown-menu">
+                    <a  data-toggle="modal" data-target="#logoutModal"  ><i class="fa fa-power -off"></i>Logout</a>  
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    
+</header>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Đăng Xuất</h3>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">Bạn chắc chắn muốn đăng xuất ?</div>
+          <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+              <button class="btn btn-primary" type="button" data-dismiss="modal" (click)="logout()" #closeButton >Đăng Xuất</button>
+          </div>
+      </div>
+  </div>
+</div>
